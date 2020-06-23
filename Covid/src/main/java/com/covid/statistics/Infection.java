@@ -28,7 +28,10 @@ public class Infection {
 	    this.setPiece(piece);
 		
 	}
-
+     
+	public int  getId() {
+		return Id;
+	}
 	
 	public Country getCountry() {
 		return country;
