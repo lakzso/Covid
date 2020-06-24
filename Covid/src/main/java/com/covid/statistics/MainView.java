@@ -36,7 +36,7 @@ public class MainView extends VerticalLayout {
 	private final InfectionRepository irep;
 
 	private HorizontalLayout createHeader() {
-		H1 logo = new H1("Vaadin CRM");
+		H1 logo = new H1("Covid App");
 	    logo.addClassName("logo");
 
 	    Anchor logout = new Anchor("logout", "Log out"); 
@@ -151,7 +151,7 @@ public class MainView extends VerticalLayout {
 
 		add(
 				createHeader(),
-				new H1("Covid"), new VerticalLayout(labelSelect, country, grid)
+				 new VerticalLayout(labelSelect, country, grid)
 
 		);
 
