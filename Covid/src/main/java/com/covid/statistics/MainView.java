@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.editor.Editor;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -33,6 +35,26 @@ public class MainView extends VerticalLayout {
 	private final CountryRepository crep;
 	private final InfectionRepository irep;
 
+	private HorizontalLayout createHeader() {
+		H1 logo = new H1("Vaadin CRM");
+	    logo.addClassName("logo");
+
+	    Anchor logout = new Anchor("logout", "Log out"); 
+
+
+
+	    HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), logo, logout); 
+
+
+	    header.expand(logo); 
+ 
+		//header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
+	    header.setWidth("100%");
+	    header.addClassName("header");
+
+	    return header;
+	}
+	
 	public MainView(CountryRepository crepo, InfectionRepository irepo) {
 
 		this.crep = crepo;
@@ -128,7 +150,7 @@ public class MainView extends VerticalLayout {
 		});
 
 		add(
-
+				createHeader(),
 				new H1("Covid"), new VerticalLayout(labelSelect, country, grid)
 
 		);
